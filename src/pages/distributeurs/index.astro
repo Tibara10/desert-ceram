@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+import { distributors } from '../../data/catalog';
+const regions = ['Centre', 'Ouest', 'Est', 'Sud'];
+---
+
+<Base title="Distributeurs — Desert Ceram" description="Showrooms et revendeurs Desert Ceram par région et par wilaya." active="distributeurs">
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Réseau</p>
+      <h1>Trouver un distributeur</h1>
+      <p class="page-head__lead">Quatre showrooms et des revendeurs partenaires pour voir les carreaux en vrai avant de choisir.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <form class="filters" id="dist-filters" role="search" aria-label="Filtrer les distributeurs">
+        <fieldset class="filters__cats">
+          <legend class="sr-only">Région</legend>
+          <label class="chip"><input type="radio" name="region" value="" checked /><span>Toutes les régions</span></label>
+          {regions.map((r) => <label class="chip"><input type="radio" name="region" value={r} /><span>{r}</span></label>)}
+        </fieldset>
+        <div class="filters__row filters__row--2">
+          <label class="field">
+            <span>Wilaya ou ville</span>
+            <input type="search" name="q" placeholder="Ex. Oran, Biskra…" autocomplete="off" />
+          </label>
+          <label class="field field--check">
+            <input type="checkbox" name="showroom" />
+            <span>Showrooms uniquement</span>
+          </label>
+        </div>
+      </form>
+
+      <p class="results" id="dist-results" aria-live="polite">{distributors.length} points de vente</p>
+
+      <ul class="dists" id="dists">
+        {distributors.map((d) => (
+          <li class="dist" data-region={d.region} data-type={d.type} data-search={`${d.wilaya} ${d.city} ${d.name}`.toLowerCase()}>
+            <span class:list={['dist__type', { 'dist__type--show': d.type === 'Showroom' }]}>{d.type}</span>
+            <h2>{d.name}</h2>
+            <p>{d.city} · wilaya de {d.wilaya}</p>
+            <p class="dist__region">Région {d.region}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="empty" id="dist-empty" hidden>Aucun point de vente trouvé. Essayez une autre wilaya ou <a href="/devis/">demandez un devis</a> : nous vous orienterons.</p>
+    </div>
+  </section>
+
+  <script>
+    import '../../scripts/distributeurs';
+  </script>
+</Base>

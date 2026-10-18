@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2a3f"/><stop offset=".45" stop-color="#b8644a"/><stop offset=".75" stop-color="#f0b77c"/></linearGradient>
+    <radialGradient id="sun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff2d6"/><stop offset=".55" stop-color="#ffd59a" stop-opacity=".9"/><stop offset="1" stop-color="#ffd59a" stop-opacity="0"/></radialGradient>
+    <filter id="g" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="4"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .12 0"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1120" cy="470" r="260" fill="url(#sun)"/>
+  <circle cx="1120" cy="470" r="70" fill="#fff4dc"/>
+  <path d="M0 520 C164 434.5 257.6 434.5 468.5 504 C633.6 398.2 728 398.2 940.3 523.8 C1116.6 371.9 1217.4 371.9 1444 511.4 C1557.5 412.9 1622.3 412.9 1768.2 508.6 L1600 900 L0 900 Z" fill="#e9b98a"/><path d="M0 600 C194.2 432.5 305.2 432.5 554.9 589.9 C647.3 504.7 700.1 504.7 818.8 603.2 C988.2 455.4 1085 455.4 1302.7 587 C1450.9 502 1535.6 502 1726.1 586.5 L1600 900 L0 900 Z" fill="#d99a68"/><path d="M0 680 C182.8 619.9 287.2 619.9 522.2 667.8 C720.3 573 833.5 573 1088.2 679.1 C1257.5 580.3 1354.3 580.3 1572.1 684.6 C1679 590.4 1740.1 590.4 1877.6 683.9 L1600 900 L0 900 Z" fill="#c47a4c"/><path d="M0 760 C141.9 678.9 223 678.9 405.5 769.3 C575.5 675.6 672.7 675.6 891.3 756.1 C1001.8 668.2 1064.9 668.2 1207 744.5 C1326.9 648.6 1395.3 648.6 1549.4 772.1 C1703.9 644.9 1792.2 644.9 1990.9 745.4 L1600 900 L0 900 Z" fill="#a85c37"/><path d="M0 840 C207.6 714.5 326.3 714.5 593.2 834.2 C708.3 720.6 774.1 720.6 922.1 843 C1021.4 718.6 1078.1 718.6 1205.6 852.2 C1386.5 747.6 1489.9 747.6 1722.4 824.1 L1600 900 L0 900 Z" fill="#7d4025"/>
+  <rect width="1600" height="900" filter="url(#g)"/>
+</svg>

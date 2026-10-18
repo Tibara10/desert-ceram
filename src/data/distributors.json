@@ -1,0 +1,16 @@
+[
+  { "name": "Showroom Desert Ceram — Alger", "region": "Centre", "wilaya": "Alger", "city": "Alger", "type": "Showroom" },
+  { "name": "Maison du Carreau", "region": "Centre", "wilaya": "Blida", "city": "Blida", "type": "Revendeur" },
+  { "name": "Céramiques de la Mitidja", "region": "Centre", "wilaya": "Tipaza", "city": "Koléa", "type": "Revendeur" },
+  { "name": "Espace Sol & Mur", "region": "Centre", "wilaya": "Tizi Ouzou", "city": "Tizi Ouzou", "type": "Revendeur" },
+  { "name": "Showroom Desert Ceram — Oran", "region": "Ouest", "wilaya": "Oran", "city": "Oran", "type": "Showroom" },
+  { "name": "Carrelages de l'Ouest", "region": "Ouest", "wilaya": "Tlemcen", "city": "Tlemcen", "type": "Revendeur" },
+  { "name": "Décor Bâtiment", "region": "Ouest", "wilaya": "Mostaganem", "city": "Mostaganem", "type": "Revendeur" },
+  { "name": "Showroom Desert Ceram — Constantine", "region": "Est", "wilaya": "Constantine", "city": "Constantine", "type": "Showroom" },
+  { "name": "Céram Plus", "region": "Est", "wilaya": "Sétif", "city": "Sétif", "type": "Revendeur" },
+  { "name": "Comptoir du Carrelage", "region": "Est", "wilaya": "Annaba", "city": "Annaba", "type": "Revendeur" },
+  { "name": "Sud Matériaux", "region": "Sud", "wilaya": "Ghardaïa", "city": "Ghardaïa", "type": "Revendeur" },
+  { "name": "Oasis Céramique", "region": "Sud", "wilaya": "Biskra", "city": "Biskra", "type": "Revendeur" },
+  { "name": "Showroom Desert Ceram — Ouargla", "region": "Sud", "wilaya": "Ouargla", "city": "Ouargla", "type": "Showroom" },
+  { "name": "Tassili Déco", "region": "Sud", "wilaya": "Béchar", "city": "Béchar", "type": "Revendeur" }
+]

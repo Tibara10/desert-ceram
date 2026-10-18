@@ -1,0 +1,13 @@
+---
+interface Props { light?: boolean }
+const { light = false } = Astro.props;
+---
+<span class:list={['logo', { 'logo--light': light }]}>
+  <svg class="logo__mark" viewBox="0 0 48 48" aria-hidden="true">
+    <rect width="48" height="48" rx="10" class="logo__bg" />
+    <circle cx="31" cy="18" r="7" class="logo__sun" />
+    <path d="M0 34 C10 24 18 24 26 31 C32 26 40 25 48 30 V48 H0 Z" class="logo__dune1" />
+    <path d="M0 41 C12 34 22 35 30 40 C36 37 42 37 48 39 V48 H0 Z" class="logo__dune2" />
+  </svg>
+  <span class="logo__word"><span>Desert</span><span>Ceram</span></span>
+</span>

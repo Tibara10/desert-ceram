@@ -1,0 +1,27 @@
+---
+import { categories, type Product, type Category } from '../data/catalog';
+interface Props { p: Product; headingLevel?: 'h2' | 'h3' }
+const { p, headingLevel = 'h3' } = Astro.props;
+const H = headingLevel;
+---
+<article
+  class="product"
+  data-slug={p.slug}
+  data-cat={p.category}
+  data-format={p.format}
+  data-finish={p.finish}
+  data-color={p.color}
+  data-name={p.name.toLowerCase()}
+>
+  <a class="product__link" href={`/collections/?p=${p.slug}`}>
+    <div class="product__img">
+      <img src={`/tiles/${p.slug}.svg`} alt="" width="600" height="600" loading="lazy" decoding="async" />
+      {p.isNew && <span class="badge">Nouveau</span>}
+    </div>
+    <div class="product__body">
+      <p class="product__cat">{categories[p.category as Category].short} · {p.format} cm</p>
+      <H class="product__name">{p.name}</H>
+      <p class="product__meta">{p.finish} · {p.color}</p>
+    </div>
+  </a>
+</article>

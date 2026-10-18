@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="297"/><feDisplacementMap in="SourceGraphic" scale="40"/><feGaussianBlur stdDeviation="0.6"/></filter>
+    <filter id="cloud" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.006" numOctaves="4" seed="304"/><feColorMatrix type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.45  0 0 0 0 0.4  0 0 0 0.22 0"/></filter>
+    
+  <filter id="g" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="297" stitchTiles="stitch"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.06 0"/>
+  </filter>
+    <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".08"/></linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="#211f1d"/>
+  <rect width="600" height="600" filter="url(#cloud)"/>
+  <g filter="url(#wobble)"><path d="M140.5 236.2 Q242.3 307.8 334.7 351.2 Q441.7 392 478.1 402.6 Q576.4 417.8 619.1 414.6 Q705.6 495.6 790.5 429 Q885.4 388.7 964.8 405.8" fill="none" stroke="#d8d1c5" stroke-width="4.8" stroke-opacity="0.8"/><path d="M25.7 97 Q145.4 123.1 182.2 113.3 Q250.8 78 322.4 64.2 Q417.8 48.2 452.7 177.7 Q547.6 266.7 587.7 176.2 Q683 177.9 742.8 270.5" fill="none" stroke="#d8d1c5" stroke-width="3.2" stroke-opacity="0.6"/><path d="M-53.7 30.1 Q33.2 -45.4 119.6 45.3 Q190.3 -16.9 302.5 -43.1 Q368.4 -90.5 479.2 72.9 Q557.4 64.7 673.4 12.2 Q748.7 69 824.2 29" fill="none" stroke="#d8d1c5" stroke-width="4.1" stroke-opacity="0.4"/><path d="M27.2 76.5 Q97.6 51.6 157 110.1 Q233.6 10.7 314.8 91.6 Q415.1 71 479.2 114.7 Q558.7 46.4 675.7 203.1 Q769.4 208.4 807.8 266.7" fill="none" stroke="#d8d1c5" stroke-width="2.2" stroke-opacity="0.7"/><path d="M37.6 583 Q151.3 653.8 159.8 531.1 Q260.3 579.7 285.4 612.4 Q361.1 700.5 472.4 568 Q576.5 592 660.2 544.9 Q734.1 463.8 789.3 640.1" fill="none" stroke="#d8d1c5" stroke-width="1.4" stroke-opacity="0.7"/><path d="M48.3 419.6 Q112.2 462.5 239.7 476.8 Q356.1 569.2 399.5 487 Q473.7 497 535.8 502.2 Q616.4 443.2 708.3 513.8 Q812.7 469 847.9 583.4" fill="none" stroke="#d8d1c5" stroke-width="0.8" stroke-opacity="0.5"/><path d="M171 549.8 Q234.6 592.7 308.8 493.1 Q411.9 559.7 479.9 508.3 Q578.1 423.7 624.5 590.7 Q692.8 675.3 818.9 528.4 Q907.8 469.4 943.2 448.1" fill="none" stroke="#d8d1c5" stroke-width="2" stroke-opacity="0.6"/></g>
+  <rect width="600" height="600" filter="url(#g)"/>
+  <rect width="600" height="600" fill="url(#sheen)"/></svg>

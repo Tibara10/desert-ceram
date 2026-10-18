@@ -1,0 +1,104 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { products, categories, unique, type Category } from '../../data/catalog';
+const formats = unique('format');
+const finishes = unique('finish');
+const colors = unique('color');
+---
+
+<Base
+  title="Collections — Desert Ceram"
+  description="Carreaux de sol, faïences murales et plinthes Desert Ceram : filtrez par format, finition et couleur."
+  active="collections"
+>
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Catalogue</p>
+      <h1>Collections</h1>
+      <p class="page-head__lead">
+        {products.length} références en grès cérame et faïence. Filtrez, puis ouvrez une fiche pour voir les caractéristiques
+        techniques et un aperçu du carreau posé.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <form class="filters" id="filters" role="search" aria-label="Filtrer les produits">
+        <fieldset class="filters__cats">
+          <legend class="sr-only">Catégorie</legend>
+          <label class="chip"><input type="radio" name="cat" value="" checked /><span>Tout</span></label>
+          {(Object.keys(categories) as Category[]).map((c) => (
+            <label class="chip"><input type="radio" name="cat" value={c} /><span>{categories[c].short}</span></label>
+          ))}
+        </fieldset>
+        <div class="filters__row">
+          <label class="field">
+            <span>Recherche</span>
+            <input type="search" name="q" placeholder="Nom du produit" autocomplete="off" />
+          </label>
+          <label class="field">
+            <span>Format (cm)</span>
+            <select name="format"><option value="">Tous</option>{formats.map((f) => <option>{f}</option>)}</select>
+          </label>
+          <label class="field">
+            <span>Finition</span>
+            <select name="finish"><option value="">Toutes</option>{finishes.map((f) => <option>{f}</option>)}</select>
+          </label>
+          <label class="field">
+            <span>Couleur</span>
+            <select name="color"><option value="">Toutes</option>{colors.map((f) => <option>{f}</option>)}</select>
+          </label>
+        </div>
+      </form>
+
+      <p class="results" id="results" aria-live="polite">{products.length} produits</p>
+
+      <div class="products" id="grid">
+        {products.map((p) => <ProductCard p={p} headingLevel="h2" />)}
+      </div>
+
+      <div class="empty" id="empty" hidden>
+        <p>Aucun produit ne correspond à ces critères.</p>
+        <button class="btn btn--ghost" type="button" id="reset">Réinitialiser les filtres</button>
+      </div>
+    </div>
+  </section>
+
+  <dialog class="sheet" id="sheet" aria-labelledby="sheet-title">
+    <div class="sheet__inner">
+      <button class="sheet__close" type="button" id="sheet-close" aria-label="Fermer la fiche">×</button>
+      <div class="sheet__visual">
+        <div class="tabs" role="tablist" aria-label="Type d’aperçu">
+          <button type="button" role="tab" id="tab-tile" aria-selected="true" aria-controls="view-tile">Carreau</button>
+          <button type="button" role="tab" id="tab-room" aria-selected="false" aria-controls="view-room">Aperçu posé</button>
+        </div>
+        <div class="view" id="view-tile" role="tabpanel" aria-labelledby="tab-tile">
+          <img id="sheet-img" alt="" width="600" height="600" />
+        </div>
+        <div class="view" id="view-room" role="tabpanel" aria-labelledby="tab-room" hidden>
+          <div class="room" id="room">
+            <div class="room__wall" id="room-wall"></div>
+            <div class="room__floor" id="room-floor"></div>
+          </div>
+          <p class="room__note">Simulation indicative : pose droite, joints de 2 mm.</p>
+        </div>
+      </div>
+      <div class="sheet__info">
+        <p class="product__cat" id="sheet-cat"></p>
+        <h2 id="sheet-title"></h2>
+        <p id="sheet-desc"></p>
+        <dl class="specs" id="sheet-specs"></dl>
+        <div class="sheet__actions">
+          <a class="btn" id="sheet-quote" href="/devis/">Demander un devis</a>
+          <button class="btn btn--ghost" type="button" id="sheet-copy">Copier le lien</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    import '../../scripts/collections';
+  </script>
+</Base>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="z" width="100" height="100" patternUnits="userSpaceOnUse">
+      <rect width="100" height="100" fill="#284f78"/>
+      <g fill="#efe7db" opacity=".9">
+    <rect x="20" y="20" width="60" height="60"/>
+    <rect x="20" y="20" width="60" height="60" transform="rotate(45 50 50)"/></g>
+      <circle cx="50" cy="50" r="12" fill="#284f78"/>
+      <g fill="#efe7db" opacity=".9">
+        <path d="M0 0 L14 0 L0 14 Z"/><path d="M100 0 L86 0 L100 14 Z"/>
+        <path d="M0 100 L14 100 L0 86 Z"/><path d="M100 100 L86 100 L100 86 Z"/>
+      </g>
+    </pattern>
+    
+  <filter id="g" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="584" stitchTiles="stitch"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.1 0"/>
+  </filter>
+    <radialGradient id="shine" cx=".3" cy=".25" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#z)"/>
+  <rect x="0" y="0" width="100" height="100" fill="#fff" opacity="0"/><rect x="100" y="0" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="200" y="0" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="300" y="0" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="400" y="0" width="100" height="100" fill="#fff" opacity="0"/><rect x="500" y="0" width="100" height="100" fill="#fff" opacity="0"/><rect x="0" y="100" width="100" height="100" fill="#fff" opacity="0"/><rect x="100" y="100" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="200" y="100" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="300" y="100" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="400" y="100" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="500" y="100" width="100" height="100" fill="#fff" opacity="0"/><rect x="0" y="200" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="100" y="200" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="200" y="200" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="300" y="200" width="100" height="100" fill="#fff" opacity="0"/><rect x="400" y="200" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="500" y="200" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="0" y="300" width="100" height="100" fill="#fff" opacity="0"/><rect x="100" y="300" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="200" y="300" width="100" height="100" fill="#fff" opacity="0"/><rect x="300" y="300" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="400" y="300" width="100" height="100" fill="#fff" opacity="0"/><rect x="500" y="300" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="0" y="400" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="100" y="400" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="200" y="400" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="300" y="400" width="100" height="100" fill="#fff" opacity="0"/><rect x="400" y="400" width="100" height="100" fill="#fff" opacity="0"/><rect x="500" y="400" width="100" height="100" fill="#fff" opacity="0"/><rect x="0" y="500" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="100" y="500" width="100" height="100" fill="#fff" opacity="0"/><rect x="200" y="500" width="100" height="100" fill="#fff" opacity="0"/><rect x="300" y="500" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="400" y="500" width="100" height="100" fill="#fff" opacity="0.1"/><rect x="500" y="500" width="100" height="100" fill="#fff" opacity="0.1"/>
+  <rect width="600" height="600" filter="url(#g)"/>
+  <rect width="600" height="600" fill="url(#shine)"/></svg>

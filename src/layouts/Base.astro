@@ -1,0 +1,101 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  active?: 'home' | 'collections' | 'distributeurs' | 'devis';
+}
+const {
+  title = 'Desert Ceram — Céramique inspirée du Sahara',
+  description = "Desert Ceram, fabricant de carrelage et de faïence inspirés du Sahara : sols en grès cérame, faïences murales et plinthes.",
+  active,
+} = Astro.props;
+const links = [
+  { href: '/', label: 'Accueil', key: 'home' },
+  { href: '/collections/', label: 'Collections', key: 'collections' },
+  { href: '/distributeurs/', label: 'Distributeurs', key: 'distributeurs' },
+];
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL('/img/hero-dunes.svg', Astro.site)} />
+    <meta name="theme-color" content="#2b1d14" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Aller au contenu</a>
+
+    <header class="header">
+      <div class="container header__inner">
+        <a class="brand" href="/" aria-label="Desert Ceram — accueil"><Logo /></a>
+
+        <nav class="nav" aria-label="Navigation principale">
+          {links.map((l) => (
+            <a href={l.href} aria-current={active === l.key ? 'page' : undefined}>{l.label}</a>
+          ))}
+          <a class="btn btn--sm" href="/devis/" aria-current={active === 'devis' ? 'page' : undefined}>Demander un devis</a>
+        </nav>
+
+        <details class="menu">
+          <summary aria-label="Ouvrir le menu"><span></span><span></span><span></span></summary>
+          <nav class="menu__panel" aria-label="Menu mobile">
+            {links.map((l) => <a href={l.href} aria-current={active === l.key ? 'page' : undefined}>{l.label}</a>)}
+            <a class="btn" href="/devis/">Demander un devis</a>
+          </nav>
+        </details>
+      </div>
+    </header>
+
+    <main id="main"><slot /></main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <Logo light />
+          <p class="footer__tag">Des sols et des murs aux couleurs du Sud.</p>
+        </div>
+        <div>
+          <h2>Collections</h2>
+          <ul>
+            <li><a href="/collections/?cat=sol">Carreaux de sol</a></li>
+            <li><a href="/collections/?cat=mur">Faïence murale</a></li>
+            <li><a href="/collections/?cat=plinthe">Plinthes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Services</h2>
+          <ul>
+            <li><a href="/devis/">Demande de devis</a></li>
+            <li><a href="/devis/#calculateur">Calculer ses besoins</a></li>
+            <li><a href="/distributeurs/">Trouver un distributeur</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Entreprise</h2>
+          <ul>
+            <li><a href="/#a-propos">Qui sommes-nous</a></li>
+            <li><a href="/distributeurs/">Nos showrooms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer__bottom">
+        <p>© {new Date().getFullYear()} Desert Ceram — Tous droits réservés</p>
+        <p>Astro · Cloudflare Pages</p>
+      </div>
+    </footer>
+    <slot name="scripts" />
+  </body>
+</html>

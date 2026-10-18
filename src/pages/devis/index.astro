@@ -1,0 +1,124 @@
+---
+import Base from '../../layouts/Base.astro';
+import { products, categories, type Category } from '../../data/catalog';
+const groups = (Object.keys(categories) as Category[]).map((c) => ({ label: categories[c].label, items: products.filter((p) => p.category === c) }));
+---
+
+<Base title="Demande de devis — Desert Ceram" description="Estimez la quantité de carrelage nécessaire et demandez un devis Desert Ceram." active="devis">
+  <section class="page-head">
+    <div class="container">
+      <p class="eyebrow">Devis gratuit</p>
+      <h1>Demander un devis</h1>
+      <p class="page-head__lead">Choisissez un produit et indiquez votre surface : l’estimation se met à jour en direct, chutes comprises.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container quote">
+      <form class="quote__form" id="quote" novalidate>
+
+        <fieldset class="block" id="calculateur">
+          <legend>1. Votre projet</legend>
+          <label class="field">
+            <span>Produit <abbr title="obligatoire">*</abbr></span>
+            <select name="produit" id="produit" required aria-describedby="err-produit">
+              <option value="">Choisir un produit</option>
+              {groups.map((g) => (
+                <optgroup label={g.label}>
+                  {g.items.map((p) => <option value={p.slug}>{p.name} — {p.format} cm, {p.finish.toLowerCase()}</option>)}
+                </optgroup>
+              ))}
+            </select>
+            <small class="error" id="err-produit"></small>
+          </label>
+          <div class="two">
+            <label class="field">
+              <span id="surface-label">Surface à couvrir (m²) <abbr title="obligatoire">*</abbr></span>
+              <input type="number" name="surface" id="surface" min="1" max="100000" step="0.5" inputmode="decimal" required aria-describedby="err-surface" />
+              <small class="error" id="err-surface"></small>
+            </label>
+            <label class="field">
+              <span>Type de pose</span>
+              <select name="pose" id="pose">
+                <option value="10">Droite (+10 % de chutes)</option>
+                <option value="15">Diagonale ou décalée (+15 %)</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="block">
+          <legend>2. Vos coordonnées</legend>
+          <div class="radios" role="radiogroup" aria-label="Profil">
+            <label class="chip"><input type="radio" name="profil" value="Particulier" checked /><span>Particulier</span></label>
+            <label class="chip"><input type="radio" name="profil" value="Professionnel" /><span>Professionnel</span></label>
+          </div>
+          <div class="two">
+            <label class="field">
+              <span>Nom complet <abbr title="obligatoire">*</abbr></span>
+              <input name="nom" autocomplete="name" required minlength="2" maxlength="80" aria-describedby="err-nom" />
+              <small class="error" id="err-nom"></small>
+            </label>
+            <label class="field">
+              <span>Wilaya <abbr title="obligatoire">*</abbr></span>
+              <input name="wilaya" required maxlength="40" aria-describedby="err-wilaya" />
+              <small class="error" id="err-wilaya"></small>
+            </label>
+            <label class="field">
+              <span>Email <abbr title="obligatoire">*</abbr></span>
+              <input type="email" name="email" autocomplete="email" required maxlength="120" aria-describedby="err-email" />
+              <small class="error" id="err-email"></small>
+            </label>
+            <label class="field">
+              <span>Téléphone</span>
+              <input type="tel" name="tel" autocomplete="tel" placeholder="05 / 06 / 07 …" pattern="^(\+213|0)[5-7](\s?\d){8}$" aria-describedby="err-tel" />
+              <small class="error" id="err-tel"></small>
+            </label>
+          </div>
+          <label class="field">
+            <span>Message</span>
+            <textarea name="message" rows="4" maxlength="1000" placeholder="Délais, pièce concernée, questions…"></textarea>
+          </label>
+          <label class="field field--check">
+            <input type="checkbox" name="consent" required aria-describedby="err-consent" />
+            <span>J’accepte que mes coordonnées soient utilisées uniquement pour répondre à cette demande. <abbr title="obligatoire">*</abbr></span>
+          </label>
+          <small class="error" id="err-consent"></small>
+        </fieldset>
+
+        <button class="btn btn--lg" type="submit">Vérifier et envoyer la demande</button>
+      </form>
+
+      <aside class="quote__aside" aria-live="polite">
+        <div class="estimate" id="estimate">
+          <img id="est-img" src="/tiles/erg.svg" alt="" width="600" height="600" />
+          <div class="estimate__body">
+            <p class="eyebrow">Estimation</p>
+            <h2 id="est-name">Choisissez un produit</h2>
+            <dl class="estimate__rows">
+              <div><dt id="est-need-label">Surface avec chutes</dt><dd id="est-need">—</dd></div>
+              <div><dt>Boîtes nécessaires</dt><dd id="est-boxes">—</dd></div>
+              <div><dt>Quantité livrée</dt><dd id="est-total">—</dd></div>
+              <div><dt>Conditionnement</dt><dd id="est-box">—</dd></div>
+            </dl>
+            <p class="small muted">Estimation indicative arrondie à la boîte supérieure. Les prix sont communiqués par votre distributeur.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <dialog class="sheet sheet--small" id="done" aria-labelledby="done-title">
+      <div class="done">
+        <p class="done__icon" aria-hidden="true">✓</p>
+        <h2 id="done-title">Demande envoyée</h2>
+        <p>Merci, votre demande a bien été prise en compte. Récapitulatif :</p>
+        <dl class="specs" id="done-recap"></dl>
+        <button class="btn" type="button" id="done-close">Fermer</button>
+      </div>
+    </dialog>
+  </section>
+
+  <script>
+    import '../../scripts/devis';
+  </script>
+</Base>
